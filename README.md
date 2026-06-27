@@ -45,7 +45,7 @@ graph TD
     User[User / Client UI] -->|1. Chat Message| Security[Security Middleware]
     Security -->|2. Sanitize, Validate, Rate-Limit| Orch[Orchestrator Agent]
     
-    subgraph Multi-Agent Pipeline (ADK Pattern)
+    subgraph ADK ["Multi-Agent Pipeline (ADK Pattern)"]
         Orch -->|3. EMP Dialogue| Checkin[Check-In Agent]
         Orch -->|4. Parse Transcript| Extract[Extraction Agent]
         Orch -->|5. Store / Fetch Data| Memory[Memory Agent]
