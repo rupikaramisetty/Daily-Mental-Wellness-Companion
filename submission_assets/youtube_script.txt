@@ -1,0 +1,91 @@
+🌿 DAILY WELLNESS COMPANION — YOUTUBE DEMO SCRIPT
+===================================================
+Target Duration: 3 to 4 Minutes (Maximum limit: 5 minutes)
+Recommended Setup: Have your Web browser, VS Code, and Terminal open and ready.
+
+---
+
+[0:00 - 0:45] PART 1: INTRODUCTION & THE PROBLEM
+-----------------------------------------------
+*VISUAL: Show the home screen of the Daily Wellness Companion running in the browser (localhost:3000) showing the clean Glassmorphism interface.*
+
+SPOKEN LINES:
+"Hi everyone! Today, I’m excited to show you the 'Daily Mental Wellness Companion,' my submission for the Kaggle AI Agents Capstone Project under the 'Agents for Good' track. 
+
+Mental health tracking apps are highly valuable, but they often fail due to high friction. Filling out rigid number grids day after day is clinical and tedious, leading users to abandon them. Furthermore, users are hesitant to share sensitive health thoughts without strong security.
+
+Our solution replaces form-filling with an empathetic conversational interface. Users simply chat about their day, and our secure, privacy-first multi-agent system does the heavy lifting in the background."
+
+
+[0:45 - 2:00] PART 2: LIVE WEB DEMO & EXTRACTION
+------------------------------------------------
+*VISUAL: Start typing a response into the chat bar.*
+*Action: Type: "Hi! I slept about 6 hours and feel okay, but I'm feeling a bit anxious about a work presentation today." and hit Send.*
+
+SPOKEN LINES:
+"Let's see it in action. I will do a quick check-in. I'll tell my companion that I slept about 6 hours but feel anxious about work today. 
+
+As I chat, the 'Check-In Agent' (running on Gemini 2.5 Flash) responds with empathy and prompts me for details. Let's fast forward to the check-in completion..."
+
+*Action: Complete the check-in conversation. Once completed, show the live multi-agent trace logs animation that lights up: 'Extraction Agent' -> 'Memory Agent' -> 'Pattern Agent' -> 'Nudge Agent' -> 'Complete'.*
+
+SPOKEN LINES:
+"Look at that! Once the check-in is complete, the Multi-Agent Orchestrator triggers our pipeline. The Extraction Agent parses our conversation transcript into structured JSON. Next, the Memory Agent saves it to Supabase. Then, the Pattern and Nudge Agents analyze trends and generate personalized recommendations.
+
+Here is the metrics dashboard showing the parsed results. We can see a Mood score, Energy level, Sleep duration, worries flagged, and context tags. Underneath, we see personalized habit recommendations, like mindfulness practices and sleep guidelines."
+
+
+[2:00 - 2:45] PART 3: WEEKLY INSIGHTS & HISTORY
+----------------------------------------------
+*VISUAL: Click the 'Trends & Weekly Insights' tab in the navigation bar.*
+
+SPOKEN LINES:
+"If I switch to the 'Trends' tab, the page queries our database for historical logs. It displays my check-in history alongside weekly insights. 
+
+Here we see my mood stability trend, a weekly summary, and list of triggers or mood boosters. This demonstrates the Memory and Pattern agents working in unison to provide actionable health guidelines."
+
+
+[2:45 - 3:45] PART 4: THE CODE & MULTI-AGENT ADK
+-----------------------------------------------
+*VISUAL: Switch to VS Code. Show the files in the 'src/agents' folder, highlighting 'base-agent.ts' and 'memory-agent.ts'.*
+
+SPOKEN LINES:
+"Let’s take a look under the hood. We built this application using the Agent Development Kit (ADK) pattern. 
+
+In VS Code, we have separate specialized files:
+- 'base-agent.ts' configures the core Gemini 2.5 Flash model interface.
+- 'memory-agent.ts' manages dynamic database upserts.
+- 'wellness-agents.ts' houses our 4 specialized agents.
+- 'orchestrator.ts' coordinates the sequential execution pipeline."
+
+*VISUAL: Show 'src/middleware/security.ts'. Highlight Zod validation and the crisis short-circuit lines.*
+
+SPOKEN LINES:
+"Security is paramount for health data. Our custom 'security.ts' middleware implements input sanitization to prevent XSS injection, Zod schemas for request validation, and sliding-window rate-limiting. 
+
+Importantly, it includes a crisis detection engine. If a user inputs distress language, the middleware instantly short-circuits the pipeline to return emergency 988 Lifeline resources."
+
+
+[3:45 - 4:30] PART 5: CLI SKILL & MCP SERVER
+--------------------------------------------
+*VISUAL: Switch to your Terminal. Run: npx ts-node cli.ts --history*
+
+SPOKEN LINES:
+"We also wanted to demonstrate advanced agent skills. Users can run check-ins directly from their terminal using our interactive CLI. 
+
+By running our CLI commands, I can print out my wellness stats and check-in history directly in my terminal with nice colored ASCII banners."
+
+*VISUAL: Show 'src/mcp/server.ts' in VS Code.*
+
+SPOKEN LINES:
+"Furthermore, we built a Model Context Protocol (MCP) Server. It exposes 6 custom tools that allow external AI assistants like Claude Desktop or Cursor to query our local database and summarize mood records securely over stdio transport."
+
+
+[4:30 - 5:00] PART 6: DEPLOYMENT & WRAP-UP
+------------------------------------------
+*VISUAL: Show the 'Dockerfile' in VS Code. Then show the project cover page graphic.*
+
+SPOKEN LINES:
+"Finally, the app is fully containerized with a production-ready, multi-stage Dockerfile optimized for Google Cloud Run deployment. 
+
+The Daily Mental Wellness Companion proves that secure, multi-agent AI systems can reduce friction and deliver real value for human wellness. Thank you for watching!"

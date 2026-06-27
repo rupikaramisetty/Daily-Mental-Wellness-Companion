@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  name      String?
+  checkIns  CheckIn[]
+  patterns  Pattern[]
+  nudges    Nudge[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model CheckIn {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  moodScore Int
+  energy    Int
+  sleep     Float?
+  summary   String
+  worries   String?
+  rawText   String   @db.Text
+  tags      String[]
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model Pattern {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  weekStart  DateTime
+  moodTrend  String
+  summary    String   @db.Text
+  insights   Json
+  entryCount Int
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, weekStart])
+  @@index([userId, createdAt])
+}
+
+model Nudge {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  patternId String?
+  message   String   @db.Text
+  category  String
+  seen      Boolean  @default(false)
+  helpful   Boolean?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}

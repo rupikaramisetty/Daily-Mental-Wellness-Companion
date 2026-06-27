@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-glow-1: rgba(99, 102, 241, 0.15);
+  --bg-glow-2: rgba(16, 185, 129, 0.1);
+  --font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #020617;
+  color: #f8fafc;
+  font-family: var(--font-family);
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar for Chat Box and Page */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Frosted glass utility */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-light {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Animations */
+@keyframes float1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4vw, 4vh) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes float2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-4vw, -4vh) scale(1.05); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.aurora-1 {
+  animation: float1 15s ease-in-out infinite alternate;
+}
+
+.aurora-2 {
+  animation: float2 18s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-light {
+  0% { opacity: 0.6; box-shadow: 0 0 10px rgba(251, 191, 36, 0.2); }
+  50% { opacity: 1; box-shadow: 0 0 20px rgba(251, 191, 36, 0.6); }
+  100% { opacity: 0.6; box-shadow: 0 0 10px rgba(251, 191, 36, 0.2); }
+}
+
+.active-light {
+  animation: pulse-light 1.8s infinite ease-in-out;
+}
+
+@keyframes text-glow {
+  0% { text-shadow: 0 0 12px rgba(52, 211, 153, 0.1); }
+  50% { text-shadow: 0 0 20px rgba(52, 211, 153, 0.4); }
+  100% { text-shadow: 0 0 12px rgba(52, 211, 153, 0.1); }
+}
+
+.glow-tab {
+  animation: text-glow 3s infinite ease-in-out;
+}
+
+/* Bubble Animations */
+@keyframes pop-in {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.bubble {
+  animation: pop-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Pulse Text for loading state */
+@keyframes blink {
+  0% { opacity: .2; }
+  20% { opacity: 1; }
+  100% { opacity: .2; }
+}
+
+.pulse-text span {
+  animation-name: blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.pulse-text span:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.pulse-text span:nth-child(3) {
+  animation-delay: .4s;
+}
+
+/* Background floating figures animations */
+@keyframes drift-rotate-1 {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  50% { transform: translate(4vw, -6vh) rotate(90deg) scale(1.08); }
+  100% { transform: translate(0, 0) rotate(180deg) scale(1); }
+}
+
+@keyframes drift-rotate-2 {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  50% { transform: translate(-3vw, 5vh) rotate(-90deg) scale(0.92); }
+  100% { transform: translate(0, 0) rotate(-180deg) scale(1); }
+}
+
+.floating-figure-1 {
+  animation: drift-rotate-1 25s ease-in-out infinite alternate;
+}
+
+.floating-figure-2 {
+  animation: drift-rotate-2 30s ease-in-out infinite alternate;
+}
+
